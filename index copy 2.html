@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="May Phu Paing - Biomedical AI researcher and Assistant Professor specializing in medical image processing, deep learning, computer-aided diagnosis, and healthcare AI." />
+    <title>May Phu Paing | Biomedical AI Research Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#0F172A',
+                            accent: '#0EA5A3',
+                            surface: '#F8FAFC',
+                            soft: '#E6F7F7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            background: linear-gradient(135deg, #f0f9fb 0%, #e8f5f8 25%, #f5fcfd 50%, #e6f7f7 75%, #f2fafb 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Animated gradient background with blobs */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -40%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(14, 165, 163, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(15, 23, 42, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 20s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px);
+            }
+            25% {
+                transform: translateY(-30px) translateX(20px);
+            }
+            50% {
+                transform: translateY(-60px) translateX(-20px);
+            }
+            75% {
+                transform: translateY(-30px) translateX(20px);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glass-card {
+            background: rgba(248, 250, 252, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(14, 165, 163, 0.15);
+        }
+
+        .research-card:hover .research-icon,
+        .publication-card:hover .publication-icon {
+            transform: rotate(-4deg) scale(1.06);
+        }
+
+        /* Gradient text effect */
+        .gradient-text {
+            background: linear-gradient(135deg, #0F172A 0%, #0EA5A3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Card hover effect */
+        .card-hover {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(14, 165, 163, 0.2);
+        }
+
+        .card-hover:hover {
+            border-color: rgba(14, 165, 163, 0.5);
+            box-shadow: 0 15px 35px rgba(14, 165, 163, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Accent line decoration */
+        .accent-line {
+            background: linear-gradient(90deg, #0EA5A3 0%, #0EA5A3 50%, transparent 100%);
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 1.5cm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            html,
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            body::before,
+            body::after {
+                display: none !important;
+            }
+
+            .print\:hidden {
+                display: none !important;
+            }
+
+            .shadow-sm,
+            .shadow-md,
+            .shadow-lg,
+            .shadow-xl,
+            .shadow-2xl {
+                box-shadow: none !important;
+            }
+
+            section,
+            article,
+            div {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans text-slate-700 selection:bg-brand-accent/20 selection:text-brand-accent">
+
+    <!-- NAVIGATION -->
+    <nav class="sticky top-0 z-40 bg-white/70 backdrop-blur-xl border-b border-brand-accent/10 print:hidden">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#home" class="font-display font-black text-xl text-brand-primary">
+                May<span class="text-brand-accent">.</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+                <a href="#research" class="hover:text-brand-accent transition-colors">Research</a>
+                <a href="#publications" class="hover:text-brand-accent transition-colors">Publications</a>
+                <a href="#skills" class="hover:text-brand-accent transition-colors">Skills</a>
+                <a href="#experience" class="hover:text-brand-accent transition-colors">Experience</a>
+                <a href="#education" class="hover:text-brand-accent transition-colors">Education</a>
+            </div>
+
+            <a href="mailto:mayphupaing2015@gmail.com"
+                class="hidden sm:inline-flex items-center gap-2 bg-brand-primary text-white px-5 py-3 rounded-2xl hover:bg-brand-accent transition-all shadow-lg">
+                <i class="fas fa-envelope text-sm"></i>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="home" class="relative pt-12 pb-16 overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-brand-accent/5 -skew-x-12 translate-x-1/4 z-0"></div>
+        <div class="absolute -top-28 -left-28 w-72 h-72 bg-brand-accent/8 rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+
+                <div class="flex-1 text-center lg:text-left fade-in">
+                    <div
+                        class="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-5 rounded-full bg-white/60 border border-brand-accent/20 shadow-sm px-3 py-2 backdrop-blur">
+                        <span
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-[0.18em] bg-brand-soft text-brand-primary">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>
+                            Biomedical AI
+                        </span>
+                        <span class="hidden sm:block w-px h-5 bg-brand-accent/20"></span>
+                        <span
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-[0.18em] text-brand-primary">
+                            <i class="fas fa-microscope text-brand-accent text-xs"></i>
+                            Medical Imaging
+                        </span>
+                        <span class="hidden sm:block w-px h-5 bg-brand-accent/20"></span>
+                        <span
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-[0.18em] text-slate-600">
+                            <i class="fas fa-brain text-brand-accent text-xs"></i>
+                            Deep Learning
+                        </span>
+                    </div>
+
+                    <h1 class="text-4xl lg:text-6xl font-display font-black text-brand-primary mb-5 leading-[0.95]">
+                        May Phu <br>
+                        <span class="text-brand-accent">Paing</span>
+                    </h1>
+
+                    <p class="text-base lg:text-lg text-slate-600 max-w-2xl mb-8 leading-relaxed">
+                        Assistant Professor and biomedical AI researcher specializing in medical image processing,
+                        deep learning, computer-aided diagnosis, and healthcare-focused intelligent systems.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mb-8">
+                        <div class="glass-card card-hover rounded-2xl p-4">
+                            <p class="text-2xl font-display font-black text-brand-primary">10+</p>
+                            <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Journal Papers</p>
+                        </div>
+                        <div class="glass-card card-hover rounded-2xl p-4">
+                            <p class="text-2xl font-display font-black text-brand-primary">PhD</p>
+                            <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Electrical Engineering</p>
+                        </div>
+                        <div class="glass-card card-hover rounded-2xl p-4">
+                            <p class="text-2xl font-display font-black text-brand-primary">AI</p>
+                            <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Medical Imaging</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 print:hidden">
+                        <a href="#research"
+                            class="group flex items-center gap-3 bg-brand-primary text-white px-8 py-4 rounded-2xl hover:bg-brand-accent transition-all shadow-lg hover:shadow-brand-accent/20">
+                            <i class="fas fa-flask"></i>
+                            <span class="font-semibold">View Research</span>
+                        </a>
+                        <a href="https://orcid.org/0000-0002-5071-1535" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center gap-3 bg-white/70 border border-brand-accent/30 px-8 py-4 rounded-2xl hover:border-brand-accent transition-all group backdrop-blur">
+                            <i class="fas fa-globe text-brand-accent group-hover:scale-110 transition-transform"></i>
+                            <span class="font-semibold text-brand-primary">ORCID</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/aparnak" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center gap-3 bg-white/70 border border-brand-accent/30 px-8 py-4 rounded-2xl hover:border-brand-accent transition-all group backdrop-blur">
+                            <i class="fab fa-linkedin text-brand-accent group-hover:scale-110 transition-transform"></i>
+                            <span class="font-semibold text-brand-primary">LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative fade-in" style="animation-delay: 0.2s;">
+                    <div class="relative w-56 h-[300px] lg:w-[300px] lg:h-[420px]">
+                        <div class="absolute -inset-4 bg-brand-accent/12 rounded-[2rem] -rotate-3 blur-2xl"></div>
+                        <div class="absolute inset-0 bg-brand-soft/30 rounded-[2rem] rotate-3"></div>
+                        <div
+                            class="relative w-full h-full overflow-hidden rounded-[2rem] shadow-[0_16px_32px_-8px_rgba(14,165,163,0.15)] border-8 border-white/80 bg-gradient-to-br from-brand-primary to-brand-primary/80">
+                            <div class="absolute inset-0 bg-gradient-to-br from-brand-primary via-brand-primary to-brand-accent/20"></div>
+                            <div class="relative h-full p-8 flex flex-col justify-between text-white">
+                                <div>
+                                    <div class="w-16 h-16 rounded-2xl bg-brand-accent/30 flex items-center justify-center mb-6">
+                                        <i class="fas fa-heartbeat text-brand-accent text-3xl"></i>
+                                    </div>
+                                    <p class="text-xs font-black uppercase tracking-[0.25em] text-brand-soft mb-3">
+                                        Research Focus
+                                    </p>
+                                    <h2 class="text-3xl font-display font-black leading-tight">
+                                        AI for medical image analysis
+                                    </h2>
+                                </div>
+                                <div class="space-y-3 text-sm text-slate-100">
+                                    <p><i class="fas fa-check text-brand-accent mr-2"></i>Lung cancer diagnosis</p>
+                                    <p><i class="fas fa-check text-brand-accent mr-2"></i>Medical segmentation</p>
+                                    <p><i class="fas fa-check text-brand-accent mr-2"></i>Deep learning research</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute -bottom-8 -right-8 glass-card card-hover p-6 rounded-3xl shadow-2xl hidden md:block">
+                            <div class="flex items-center gap-4">
+                                <div class="p-3 bg-brand-soft rounded-2xl">
+                                    <i class="fas fa-microscope text-brand-accent text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] mb-1">
+                                        Core Area
+                                    </p>
+                                    <p class="text-xl font-display font-bold text-brand-primary">Medical AI</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pb-32">
+
+        <!-- PROFILE SUMMARY -->
+        <section class="mb-24">
+            <div class="glass-card card-hover rounded-3xl p-8 lg:p-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-4">
+                        <span class="text-xs font-black text-brand-accent uppercase tracking-[0.3em]">Profile</span>
+                        <h2 class="text-3xl lg:text-4xl font-display font-black text-brand-primary mt-4 leading-tight">
+                            Biomedical AI researcher and educator
+                        </h2>
+                    </div>
+                    <div class="lg:col-span-8">
+                        <p class="text-slate-600 leading-relaxed text-base lg:text-lg" style="text-align: justify;">
+                            May Phu Paing is an Assistant Professor in the Department of Biomedical Engineering at King
+                            Mongkut's Institute of Technology Ladkrabang, Bangkok, Thailand. Her research focuses on
+                            computer-aided diagnosis using medical images, with strong experience in image processing,
+                            machine learning, deep learning, segmentation, classification, and explainable AI for healthcare.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESEARCH -->
+        <section id="research" class="mb-24">
+            <div class="relative mb-14">
+                <div class="absolute -top-4 left-0 flex items-center gap-2 print:hidden">
+                    <span class="accent-line w-8 h-px"></span>
+                    <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-accent/40"></span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pt-6">
+                    <div class="lg:col-span-7">
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="text-xs font-black text-brand-accent uppercase tracking-[0.3em]">
+                                Selected Research
+                            </span>
+                            <span
+                                class="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-brand-soft text-brand-primary border border-brand-accent/20">
+                                Medical AI
+                            </span>
+                        </div>
+
+                        <h2 class="text-4xl lg:text-5xl font-display font-black text-brand-primary tracking-tight leading-[1.05]">
+                            Biomedical AI &
+                            <span class="relative inline-block">
+                                <span class="relative z-10 text-brand-accent">medical imaging</span>
+                                <span class="absolute bottom-1 left-0 w-full h-3 bg-brand-accent/15 -z-0 rounded-sm"></span>
+                            </span>
+                        </h2>
+                    </div>
+
+                    <div class="lg:col-span-5">
+                        <div class="glass-card card-hover rounded-2xl p-6">
+                            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400 mb-4">
+                                Focus Areas
+                            </p>
+                            <div class="grid grid-cols-2 gap-x-5 gap-y-3">
+                                <div class="flex items-center gap-2.5">
+                                    <i class="fas fa-lungs text-brand-accent text-xs"></i>
+                                    <span class="text-sm font-semibold text-brand-primary">Lung Diagnosis</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <i class="fas fa-x-ray text-brand-accent text-xs"></i>
+                                    <span class="text-sm font-semibold text-brand-primary">Medical Imaging</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <i class="fas fa-brain text-brand-accent text-xs"></i>
+                                    <span class="text-sm font-semibold text-brand-primary">Deep Learning</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <i class="fas fa-chart-line text-brand-accent text-xs"></i>
+                                    <span class="text-sm font-semibold text-brand-primary">Explainable AI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <article class="research-card lg:col-span-2 glass-card card-hover rounded-3xl p-8 overflow-hidden relative">
+                    <div class="absolute top-0 right-0 w-72 h-72 bg-brand-accent/5 rounded-full blur-3xl translate-x-24 -translate-y-24"></div>
+                    <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                        <div class="lg:col-span-2">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="research-icon w-14 h-14 rounded-2xl bg-brand-accent text-white flex items-center justify-center transition-transform duration-300">
+                                    <i class="fas fa-lungs text-2xl"></i>
+                                </div>
+                                <div>
+                                    <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-soft text-brand-primary">
+                                        Featured Research
+                                    </span>
+                                    <h3 class="text-2xl font-display font-black text-brand-primary mt-3">
+                                        Automated Lung Cancer Diagnosis
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <p class="text-slate-600 leading-relaxed mb-6" style="text-align: justify;">
+                                Conducted research on automatic detection and staging of lung tumors using locational
+                                features and double-staged classifications, as well as pulmonary nodule detection using
+                                three-dimensional chain coding and optimized Random Forest methods.
+                            </p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <div class="glass-card rounded-2xl p-4">
+                                    <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Area</p>
+                                    <p class="font-bold text-brand-primary">Lung Cancer AI</p>
+                                </div>
+                                <div class="glass-card rounded-2xl p-4">
+                                    <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Method</p>
+                                    <p class="font-bold text-brand-primary">Classification</p>
+                                </div>
+                                <div class="glass-card rounded-2xl p-4">
+                                    <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Goal</p>
+                                    <p class="font-bold text-brand-primary">Computer-Aided Diagnosis</p>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Medical Imaging</span>
+                                <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Lung Tumor Detection</span>
+                                <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Random Forest</span>
+                                <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Classification</span>
+                                <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Computer-Aided Diagnosis</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-brand-primary rounded-3xl p-6 text-white shadow-xl">
+                            <p class="text-[10px] font-black uppercase tracking-[0.25em] text-brand-accent mb-4">
+                                Research Highlights
+                            </p>
+                            <div class="space-y-4">
+                                <div class="p-4 bg-brand-accent/10 rounded-2xl border border-brand-accent/20">
+                                    <p class="font-bold">Lung Tumor Staging</p>
+                                    <p class="text-sm text-slate-200 mt-1">Medical imaging and classification research</p>
+                                </div>
+                                <div class="p-4 bg-brand-accent/10 rounded-2xl border border-brand-accent/20">
+                                    <p class="font-bold">Pulmonary Nodules</p>
+                                    <p class="text-sm text-slate-200 mt-1">3D chain coding and optimized Random Forest</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="research-card glass-card card-hover rounded-3xl p-8">
+                    <div class="research-icon w-14 h-14 rounded-2xl bg-brand-accent/15 text-brand-accent flex items-center justify-center mb-6 transition-transform duration-300">
+                        <i class="fas fa-brain text-2xl"></i>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-soft text-brand-primary">MRI Segmentation</span>
+                    <h3 class="text-2xl font-display font-black text-brand-primary mt-4 mb-4">Automated Segmentation of Infarct Lesions</h3>
+                    <p class="text-slate-600 leading-relaxed mb-5" style="text-align: justify;">
+                        Researched automated segmentation of infarct lesions in T1-weighted MRI scans using variational
+                        mode decomposition and deep learning for medical image analysis.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">MRI</span>
+                        <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Deep Learning</span>
+                        <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Segmentation</span>
+                    </div>
+                </article>
+
+                <article class="research-card glass-card card-hover rounded-3xl p-8">
+                    <div class="research-icon w-14 h-14 rounded-2xl bg-brand-accent/15 text-brand-accent flex items-center justify-center mb-6 transition-transform duration-300">
+                        <i class="fas fa-microscope text-2xl"></i>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-soft text-brand-primary">Cell Segmentation</span>
+                    <h3 class="text-2xl font-display font-black text-brand-primary mt-4 mb-4">Multiple Myeloma Cell Segmentation</h3>
+                    <p class="text-slate-600 leading-relaxed mb-5" style="text-align: justify;">
+                        Applied Mask R-CNN and deep-wise data augmentation for instance segmentation of multiple
+                        myeloma cells in biomedical images.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Mask R-CNN</span>
+                        <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Instance Segmentation</span>
+                        <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Data Augmentation</span>
+                    </div>
+                </article>
+
+                <article class="research-card glass-card card-hover rounded-3xl p-8">
+                    <div class="research-icon w-14 h-14 rounded-2xl bg-brand-accent/15 text-brand-accent flex items-center justify-center mb-6 transition-transform duration-300">
+                        <i class="fas fa-tooth text-2xl"></i>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-soft text-brand-primary">Dental AI</span>
+                    <h3 class="text-2xl font-display font-black text-brand-primary mt-4 mb-4">Caries Detection on Dental Radiographs</h3>
+                    <p class="text-slate-600 leading-relaxed mb-5" style="text-align: justify;">
+                        Contributed to deep fusion feature extraction and ensemble deep learning approaches for caries
+                        screening on dental panoramic radiographs.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Dental Radiographs</span>
+                        <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Feature Extraction</span>
+                        <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Ensemble Learning</span>
+                    </div>
+                </article>
+
+                <article class="research-card glass-card card-hover rounded-3xl p-8">
+                    <div class="research-icon w-14 h-14 rounded-2xl bg-brand-accent/15 text-brand-accent flex items-center justify-center mb-6 transition-transform duration-300">
+                        <i class="fas fa-x-ray text-2xl"></i>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-soft text-brand-primary">Explainable AI</span>
+                    <h3 class="text-2xl font-display font-black text-brand-primary mt-4 mb-4">YOLO-Based Breast Cancer Detection</h3>
+                    <p class="text-slate-600 leading-relaxed mb-5" style="text-align: justify;">
+                        Analyzed explainability of YOLO-based breast cancer detection using heat map visualizations to
+                        improve model interpretability for medical AI applications.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">YOLO</span>
+                        <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Heatmaps</span>
+                        <span class="px-3 py-1 bg-brand-soft text-brand-primary text-xs font-bold rounded-lg">Explainable AI</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- PUBLICATIONS -->
+        <section id="publications" class="mb-24">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="p-3 bg-brand-soft rounded-xl">
+                    <i class="fas fa-newspaper text-brand-accent text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-black text-brand-accent uppercase tracking-[0.3em]">Selected Publications</span>
+                    <h2 class="text-3xl font-display font-bold text-brand-primary tracking-tight mt-2">Journal Papers & Research Output</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <article class="publication-card glass-card card-hover rounded-3xl p-6">
+                    <div class="flex gap-4">
+                        <div class="publication-icon w-12 h-12 rounded-2xl bg-brand-soft text-brand-accent flex items-center justify-center shrink-0 transition-transform">
+                            <i class="fas fa-lungs"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-brand-accent mb-2">Applied Sciences · 2019</p>
+                            <h3 class="font-display font-bold text-brand-primary leading-snug">Automatic Detection and Staging of Lung Tumors using Locational Features and Double-Staged Classifications</h3>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-card glass-card card-hover rounded-3xl p-6">
+                    <div class="flex gap-4">
+                        <div class="publication-icon w-12 h-12 rounded-2xl bg-brand-soft text-brand-accent flex items-center justify-center shrink-0 transition-transform">
+                            <i class="fas fa-lungs"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-brand-accent mb-2">Applied Sciences · 2020</p>
+                            <h3 class="font-display font-bold text-brand-primary leading-snug">Automatic Detection of Pulmonary Nodules using Three-dimensional Chain Coding and Optimized Random Forest</h3>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-card glass-card card-hover rounded-3xl p-6">
+                    <div class="flex gap-4">
+                        <div class="publication-icon w-12 h-12 rounded-2xl bg-brand-soft text-brand-accent flex items-center justify-center shrink-0 transition-transform">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-brand-accent mb-2">Sensors · 2021</p>
+                            <h3 class="font-display font-bold text-brand-primary leading-snug">Automated Segmentation of Infarct Lesions in T1-Weighted MRI Scans Using Variational Mode Decomposition and Deep Learning</h3>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-card glass-card card-hover rounded-3xl p-6">
+                    <div class="flex gap-4">
+                        <div class="publication-icon w-12 h-12 rounded-2xl bg-brand-soft text-brand-accent flex items-center justify-center shrink-0 transition-transform">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-brand-accent mb-2">Entropy · 2022</p>
+                            <h3 class="font-display font-bold text-brand-primary leading-snug">Instance Segmentation of Multiple Myeloma Cells Using Deep-Wise Data Augmentation and Mask R-CNN</h3>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-card glass-card card-hover rounded-3xl p-6">
+                    <div class="flex gap-4">
+                        <div class="publication-icon w-12 h-12 rounded-2xl bg-brand-soft text-brand-accent flex items-center justify-center shrink-0 transition-transform">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-brand-accent mb-2">IEEE Access · 2023</p>
+                            <h3 class="font-display font-bold text-brand-primary leading-snug">Adenoma Dysplasia Grading of Colorectal Polyps Using Fast Fourier Convolutional ResNet</h3>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-card glass-card card-hover rounded-3xl p-6">
+                    <div class="flex gap-4">
+                        <div class="publication-icon w-12 h-12 rounded-2xl bg-brand-soft text-brand-accent flex items-center justify-center shrink-0 transition-transform">
+                            <i class="fas fa-x-ray"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-black uppercase tracking-widest text-brand-accent mb-2">QIMS · 2025</p>
+                            <h3 class="font-display font-bold text-brand-primary leading-snug">Analyzing Explainability of YOLO-Based Breast Cancer Detection Using Heat Map Visualizations</h3>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
+            <div class="lg:col-span-2 glass-card card-hover rounded-3xl p-8">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="p-3 bg-brand-soft rounded-xl">
+                        <i class="fas fa-toolbox text-brand-accent text-xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-display font-bold text-brand-primary tracking-tight">Technical Skills</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-5 bg-brand-soft/50 rounded-2xl border border-brand-accent/10">
+                        <h3 class="font-display font-bold text-brand-primary mb-3">Biomedical AI</h3>
+                        <p class="text-sm leading-relaxed text-slate-600" style="text-align: justify;">
+                            Medical image processing, deep learning, computer-aided diagnosis, segmentation,
+                            classification, object detection, and explainable AI.
+                        </p>
+                    </div>
+
+                    <div class="p-5 bg-brand-soft/50 rounded-2xl border border-brand-accent/10">
+                        <h3 class="font-display font-bold text-brand-primary mb-3">Programming</h3>
+                        <p class="text-sm leading-relaxed text-slate-600" style="text-align: justify;">
+                            Python, MATLAB, C#, R, SQL, research programming, machine learning workflows, and image
+                            analysis tools.
+                        </p>
+                    </div>
+
+                    <div class="p-5 bg-brand-soft/50 rounded-2xl border border-brand-accent/10">
+                        <h3 class="font-display font-bold text-brand-primary mb-3">Research</h3>
+                        <p class="text-sm leading-relaxed text-slate-600" style="text-align: justify;">
+                            Academic publications, experiment design, model evaluation, technical writing, research
+                            collaboration, and healthcare AI studies.
+                        </p>
+                    </div>
+
+                    <div class="p-5 bg-brand-soft/50 rounded-2xl border border-brand-accent/10">
+                        <h3 class="font-display font-bold text-brand-primary mb-3">Teaching</h3>
+                        <p class="text-sm leading-relaxed text-slate-600" style="text-align: justify;">
+                            Biomedical engineering teaching, student mentoring, internship supervision, and research
+                            project guidance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-brand-primary text-white rounded-3xl p-8 shadow-lg">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="p-3 bg-brand-accent/20 rounded-xl">
+                        <i class="fas fa-star text-brand-accent text-xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-display font-bold text-white tracking-tight">Strengths</h2>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="p-4 bg-brand-accent/10 rounded-2xl border border-brand-accent/20">
+                        <p class="text-xs font-bold text-brand-soft uppercase mb-2 tracking-widest">Medical AI Research</p>
+                        <p class="text-sm text-slate-100 leading-relaxed" style="text-align: justify;">
+                            Strong research background in computer-aided diagnosis using medical imaging data.
+                        </p>
+                    </div>
+
+                    <div class="p-4 bg-brand-accent/10 rounded-2xl border border-brand-accent/20">
+                        <p class="text-xs font-bold text-brand-soft uppercase mb-2 tracking-widest">Deep Learning</p>
+                        <p class="text-sm text-slate-100 leading-relaxed" style="text-align: justify;">
+                            Experience with segmentation, classification, transfer learning, object detection, and model evaluation.
+                        </p>
+                    </div>
+
+                    <div class="p-4 bg-brand-accent/10 rounded-2xl border border-brand-accent/20">
+                        <p class="text-xs font-bold text-brand-soft uppercase mb-2 tracking-widest">Academic Leadership</p>
+                        <p class="text-sm text-slate-100 leading-relaxed" style="text-align: justify;">
+                            Teaching, mentoring, publishing, and contributing to biomedical engineering research.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="mb-24">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="p-3 bg-brand-soft rounded-xl">
+                    <i class="fas fa-briefcase text-brand-accent text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-display font-bold text-brand-primary tracking-tight">Professional Experience</h2>
+            </div>
+
+            <div class="space-y-8">
+                <div class="glass-card card-hover rounded-3xl p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-soft text-brand-primary">Dec 2022 – Present</span>
+                            <h3 class="text-2xl font-display font-bold text-brand-primary mt-4 mb-2">Assistant Professor</h3>
+                            <p class="text-brand-accent font-semibold">King Mongkut's Institute of Technology Ladkrabang</p>
+                            <p class="text-slate-500 text-sm mt-1">Bangkok, Thailand</p>
+                        </div>
+                        <ul class="md:col-span-2 space-y-4 border-l border-brand-accent/20 md:pl-8">
+                            <li class="flex gap-4"><i class="fas fa-check-circle text-brand-accent mt-1"></i><span class="text-slate-700">Teaching and conducting research in the Department of Biomedical Engineering.</span></li>
+                            <li class="flex gap-4"><i class="fas fa-check-circle text-brand-accent mt-1"></i><span class="text-slate-700">Researching biomedical AI, medical image processing, and computer-aided diagnosis systems.</span></li>
+                            <li class="flex gap-4"><i class="fas fa-check-circle text-brand-accent mt-1"></i><span class="text-slate-700">Publishing research in deep learning, segmentation, detection, and healthcare AI.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass-card card-hover rounded-3xl p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-soft text-brand-primary">2020 – 2022</span>
+                            <h3 class="text-2xl font-display font-bold text-brand-primary mt-4 mb-2">Lecturer</h3>
+                            <p class="text-brand-accent font-semibold">King Mongkut's Institute of Technology Ladkrabang</p>
+                            <p class="text-slate-500 text-sm mt-1">Bangkok, Thailand</p>
+                        </div>
+                        <ul class="md:col-span-2 space-y-4 border-l border-brand-accent/20 md:pl-8">
+                            <li class="flex gap-4"><i class="fas fa-check-circle text-brand-accent mt-1"></i><span class="text-slate-700">Taught biomedical engineering courses and supported academic research activities.</span></li>
+                            <li class="flex gap-4"><i class="fas fa-check-circle text-brand-accent mt-1"></i><span class="text-slate-700">Conducted research in medical image analysis and deep learning-based diagnosis support.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass-card card-hover rounded-3xl p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-soft text-brand-primary">2019 – 2020</span>
+                            <h3 class="text-2xl font-display font-bold text-brand-primary mt-4 mb-2">Research Assistant</h3>
+                            <p class="text-brand-accent font-semibold">Department of Biomedical Engineering, KMITL</p>
+                            <p class="text-slate-500 text-sm mt-1">Bangkok, Thailand</p>
+                        </div>
+                        <ul class="md:col-span-2 space-y-4 border-l border-brand-accent/20 md:pl-8">
+                            <li class="flex gap-4"><i class="fas fa-check-circle text-brand-accent mt-1"></i><span class="text-slate-700">Assisted research activities and supported internship students.</span></li>
+                            <li class="flex gap-4"><i class="fas fa-check-circle text-brand-accent mt-1"></i><span class="text-slate-700">Worked on biomedical image processing and AI-related research projects.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass-card card-hover rounded-3xl p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-soft text-brand-primary">2018 – 2019</span>
+                            <h3 class="text-2xl font-display font-bold text-brand-primary mt-4 mb-2">Short-term Researcher</h3>
+                            <p class="text-brand-accent font-semibold">Tokai University</p>
+                            <p class="text-slate-500 text-sm mt-1">Tokyo, Japan</p>
+                        </div>
+                        <ul class="md:col-span-2 space-y-4 border-l border-brand-accent/20 md:pl-8">
+                            <li class="flex gap-4"><i class="fas fa-check-circle text-brand-accent mt-1"></i><span class="text-slate-700">Conducted short-term research on automated diagnosis of lung cancer.</span></li>
+                            <li class="flex gap-4"><i class="fas fa-check-circle text-brand-accent mt-1"></i><span class="text-slate-700">Applied image analysis and machine learning techniques to medical diagnosis research.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION AND AWARDS -->
+        <section id="education" class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
+            <div class="glass-card card-hover rounded-3xl p-8">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="p-3 bg-brand-soft rounded-xl">
+                        <i class="fas fa-graduation-cap text-brand-accent text-xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-display font-bold text-brand-primary tracking-tight">Education</h2>
+                </div>
+
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-display font-bold text-brand-primary">Doctor of Engineering</h3>
+                        <p class="text-brand-accent font-medium">Electrical Engineering</p>
+                        <p class="text-slate-500 text-sm">King Mongkut's Institute of Technology Ladkrabang, Thailand | 2020</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-display font-bold text-brand-primary">Master of Research</h3>
+                        <p class="text-brand-accent font-medium">Computer Science</p>
+                        <p class="text-slate-500 text-sm">University of Yangon, Myanmar | 2015</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-display font-bold text-brand-primary">Master of Science</h3>
+                        <p class="text-brand-accent font-medium">Computer Science</p>
+                        <p class="text-slate-500 text-sm">University of Yangon, Myanmar | 2014</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-display font-bold text-brand-primary">Bachelor of Science Honors</h3>
+                        <p class="text-brand-accent font-medium">Computer Science</p>
+                        <p class="text-slate-500 text-sm">Yadanabon University, Myanmar | 2012</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-brand-primary text-white rounded-3xl p-8 shadow-lg">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="p-3 bg-brand-accent/20 rounded-xl">
+                        <i class="fas fa-award text-brand-accent text-xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-display font-bold text-white tracking-tight">Awards</h2>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="p-5 bg-brand-accent/10 rounded-2xl border border-brand-accent/20">
+                        <p class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-soft mb-2">2017</p>
+                        <h3 class="font-display font-bold text-lg">Best Paper Award</h3>
+                        <p class="text-sm text-slate-100 mt-2">International Symposium on Computational and Applications, Malacca City, Malaysia.</p>
+                    </div>
+                    <div class="p-5 bg-brand-accent/10 rounded-2xl border border-brand-accent/20">
+                        <p class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-soft mb-2">2022</p>
+                        <h3 class="font-display font-bold text-lg">Young Researcher Award</h3>
+                        <p class="text-sm text-slate-100 mt-2">School of Engineering, KMITL.</p>
+                    </div>
+                    <div class="p-5 bg-brand-accent/10 rounded-2xl border border-brand-accent/20">
+                        <p class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-soft mb-2">Research Recognition</p>
+                        <h3 class="font-display font-bold text-lg">Mostly Cited Paper & Outstanding Author</h3>
+                        <p class="text-sm text-slate-100 mt-2">Recognized for research contributions in Sensors and Quantitative Imaging in Medicine and Surgery.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LANGUAGES -->
+        <section class="mb-24">
+            <div class="glass-card card-hover rounded-3xl p-8">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="p-3 bg-brand-soft rounded-xl">
+                        <i class="fas fa-language text-brand-accent text-xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-display font-bold text-brand-primary tracking-tight">Languages</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-5 bg-brand-soft/50 rounded-2xl border border-brand-accent/10">
+                        <p class="font-display font-bold text-brand-primary">Burmese</p>
+                        <p class="text-sm text-slate-600 mt-1">Native</p>
+                    </div>
+                    <div class="p-5 bg-brand-soft/50 rounded-2xl border border-brand-accent/10">
+                        <p class="font-display font-bold text-brand-primary">English</p>
+                        <p class="text-sm text-slate-600 mt-1">Fluent</p>
+                    </div>
+                    <div class="p-5 bg-brand-soft/50 rounded-2xl border border-brand-accent/10">
+                        <p class="font-display font-bold text-brand-primary">Japanese</p>
+                        <p class="text-sm text-slate-600 mt-1">N3</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- BACK TO TOP -->
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="fixed bottom-8 right-8 p-4 bg-brand-primary text-white rounded-2xl shadow-lg hover:bg-brand-accent transition-all z-50 print:hidden group">
+        <i class="fas fa-chevron-up group-hover:-translate-y-1 transition-transform"></i>
+    </button>
+
+    <!-- FOOTER -->
+    <footer class="bg-gradient-to-br from-brand-primary to-brand-primary/90 text-white py-20 print:hidden">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-display font-bold mb-8">Let's Connect</h2>
+
+            <div class="flex flex-wrap justify-center gap-8 mb-12">
+                <a href="mailto:mayphupaing2015@gmail.com"
+                    class="flex items-center gap-3 text-slate-200 hover:text-brand-accent transition-colors">
+                    <i class="fas fa-envelope"></i>
+                    mayphupaing2015@gmail.com
+                </a>
+                <a href="tel:+66954922710" class="flex items-center gap-3 text-slate-200 hover:text-brand-accent transition-colors">
+                    <i class="fas fa-phone"></i>
+                    (+66) 954922710
+                </a>
+                <a href="https://orcid.org/0000-0002-5071-1535" target="_blank" rel="noopener noreferrer"
+                    class="flex items-center gap-3 text-slate-200 hover:text-brand-accent transition-colors">
+                    <i class="fas fa-globe"></i>
+                    ORCID
+                </a>
+                <a href="https://www.linkedin.com/in/aparnak" target="_blank" rel="noopener noreferrer"
+                    class="flex items-center gap-3 text-slate-200 hover:text-brand-accent transition-colors">
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn
+                </a>
+            </div>
+
+            <div class="w-24 h-1 bg-brand-accent mx-auto mb-12"></div>
+            <p class="text-slate-300 text-sm mb-4">
+                Biomedical AI · Medical Image Processing · Deep Learning · Computer-Aided Diagnosis
+            </p>
+            <p class="text-slate-400 text-xs font-mono">© 2026 • May Phu Paing</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
