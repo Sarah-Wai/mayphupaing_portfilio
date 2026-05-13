@@ -19,13 +19,11 @@
             theme: {
                 extend: {
                     colors: {
-                       brand: {
-                            primary: '#07111F',
-                            accent: '#2563EB',
+                        brand: {
+                            primary: '#0F172A',
+                            accent: '#0EA5A3',
                             surface: '#F8FAFC',
-                            soft: '#EAF2FF',
-                            secondary: '#7C3AED',
-                            glow: '#C7D2FE'
+                            soft: '#E6F7F7'
                         }
                     },
                     fontFamily: {
@@ -38,67 +36,20 @@
     </script>
 
     <style>
-
         :root {
-            --brand-primary: #07111F;
-            --brand-accent: #2563EB;
-            --brand-secondary: #7C3AED;
-            --brand-soft: #EAF2FF;
-            --brand-glow: #C7D2FE;
+            --bg-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900"><defs><radialGradient id="bokeh1" cx="20%" cy="15%"><stop offset="0%" style="stop-color:%23FFFFFF;stop-opacity:0.85"/><stop offset="100%" style="stop-color:%238EC5FC;stop-opacity:0.25"/></radialGradient><radialGradient id="bokeh2" cx="75%" cy="30%"><stop offset="0%" style="stop-color:%23E3F2FD;stop-opacity:0.75"/><stop offset="100%" style="stop-color:%2390CAF9;stop-opacity:0.2"/></radialGradient><radialGradient id="bokeh3" cx="15%" cy="70%"><stop offset="0%" style="stop-color:%23FFFFFF;stop-opacity:0.7"/><stop offset="100%" style="stop-color:%23BBDEFB;stop-opacity:0.18"/></radialGradient><linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%23D7EEFF;stop-opacity:1"/><stop offset="35%" style="stop-color:%23EAF6FF;stop-opacity:1"/><stop offset="70%" style="stop-color:%23F5FBFF;stop-opacity:1"/><stop offset="100%" style="stop-color:%23FFFFFF;stop-opacity:1"/></linearGradient></defs><rect width="1400" height="900" fill="url(%23skyGrad)"/><circle cx="180" cy="120" r="110" fill="url(%23bokeh1)"/><circle cx="1150" cy="180" r="130" fill="url(%23bokeh2)"/><circle cx="250" cy="700" r="90" fill="url(%23bokeh3)"/><circle cx="1050" cy="680" r="140" fill="url(%23bokeh2)"/><circle cx="650" cy="220" r="75" fill="url(%23bokeh1)"/><path d="M 0 680 Q 300 620 700 650 T 1400 670 L 1400 900 L 0 900 Z" fill="%23FFFFFF" opacity="0.35"/></svg>');
         }
 
         body {
-            background:
-                radial-gradient(circle at 8% 8%, rgba(37, 99, 235, 0.16), transparent 30%),
-                radial-gradient(circle at 92% 16%, rgba(124, 58, 237, 0.12), transparent 28%),
-                radial-gradient(circle at 50% 95%, rgba(14, 165, 233, 0.11), transparent 32%),
-                linear-gradient(135deg, #F8FBFF 0%, #EEF4FF 45%, #F7FAFF 100%);
+            background-image: var(--bg-image);
             background-attachment: fixed;
-            color: #0F172A;
-            overflow-x: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #EEF7FD;
         }
 
-        body::before,
-        body::after {
-            content: "";
-            position: fixed;
-            width: 620px;
-            height: 620px;
-            border-radius: 9999px;
-            filter: blur(120px);
-            z-index: -2;
-            opacity: 0.22;
-            pointer-events: none;
-        }
-
-        body::before {
-            background: #93C5FD;
-            top: -260px;
-            left: -220px;
-        }
-
-        body::after {
-            background: #DDD6FE;
-            bottom: -280px;
-            right: -220px;
-        }
-
-        .mist-section {
-            position: relative;
-        }
-
-        .mist-section::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(120deg, rgba(255,255,255,0.62), rgba(255,255,255,0.20)),
-                radial-gradient(circle at 20% 10%, rgba(37,99,235,0.10), transparent 35%),
-                radial-gradient(circle at 82% 18%, rgba(124,58,237,0.10), transparent 38%);
-            pointer-events: none;
-        }
-
-.fade-in {
+        .fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
 
@@ -115,17 +66,91 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.78);
+            background: rgba(255, 255, 255, 0.82);
             backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.55);
-            box-shadow:
-                0 18px 45px rgba(15, 23, 42, 0.08),
-                0 2px 8px rgba(15, 23, 42, 0.04);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            box-shadow: 0 10px 35px rgba(14, 165, 163, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.92);
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(14, 165, 163, 0.12);
+        }
+
+        .research-card,
+        .publication-card {
+            background: rgba(255, 255, 255, 0.84);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            box-shadow: 0 10px 30px rgba(14, 165, 163, 0.06);
+            transition: all 0.35s ease;
+        }
+
+        .research-card:hover,
+        .publication-card:hover {
+            background: rgba(255, 255, 255, 0.96);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(14, 165, 163, 0.12);
+            border-color: rgba(14, 165, 163, 0.18);
+        }
+
+        .research-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(14,165,163,0.15));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
         }
 
         .research-card:hover .research-icon,
         .publication-card:hover .publication-icon {
-            transform: rotate(-4deg) scale(1.06);
+            transform: rotate(-4deg) scale(1.08);
+        }
+
+        .research-icon {
+            box-shadow: 0 10px 25px rgba(14, 165, 163, 0.15);
+        }
+
+        .publication-icon {
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.72) !important;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,0.7);
+        }
+
+        footer {
+            background: linear-gradient(135deg, rgba(15,23,42,0.96), rgba(15,23,42,0.92)) !important;
+        }
+
+        .bg-white {
+            background: rgba(255,255,255,0.82) !important;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .shadow-sm {
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04) !important;
+        }
+
+        .shadow-md {
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06) !important;
+        }
+
+        .shadow-xl {
+            box-shadow: 0 18px 48px rgba(15, 23, 42, 0.12) !important;
         }
 
         @media print {
@@ -169,7 +194,7 @@
 <body class="font-sans text-slate-700 selection:bg-brand-accent/20 selection:text-brand-accent">
 
     <!-- NAVIGATION -->
-    <nav class="sticky top-0 z-40 bg-white/70 backdrop-blur-2xl border-b border-white/60 shadow-sm print:hidden">
+    <nav class="sticky top-0 z-40 bg-white/90 backdrop-blur-xl border-b border-slate-100 print:hidden">
         <div class="container mx-auto px-6 py-4 flex items-center justify-between">
             <a href="#home" class="font-display font-black text-xl text-brand-primary">
                 May<span class="text-brand-accent">.</span>
@@ -192,10 +217,9 @@
     </nav>
 
     <!-- HERO -->
-    <header id="home" class="mist-section relative pt-12 pb-20 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-white/40 via-white/10 to-transparent z-0"></div>
-        <div class="absolute top-10 right-10 w-96 h-96 bg-brand-accent/15 rounded-full blur-3xl"></div>
-        <div class="absolute -top-28 -left-28 w-72 h-72 bg-white/50 rounded-full blur-3xl"></div>
+    <header id="home" class="relative pt-12 pb-16 overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-br from-brand-accent/10 to-cyan-200/10 -skew-x-12 translate-x-1/4 z-0 blur-2xl"></div>
+        <div class="absolute -top-28 -left-28 w-72 h-72 bg-brand-accent/10 rounded-full blur-3xl"></div>
 
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-12">
@@ -294,7 +318,7 @@
                         </div>
 
                         <div
-                            class="absolute -bottom-8 -right-8 bg-white/90 backdrop-blur-xl p-6 rounded-3xl shadow-2xl border border-white/70 hidden md:block">
+                            class="absolute -bottom-8 -right-8 bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 hidden md:block">
                             <div class="flex items-center gap-4">
                                 <div class="p-3 bg-teal-50 rounded-2xl">
                                     <i class="fas fa-microscope text-teal-600 text-xl"></i>
@@ -314,11 +338,11 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-6 pb-32 relative z-10">
+    <main class="container mx-auto px-6 pb-32">
 
         <!-- PROFILE SUMMARY -->
         <section class="mb-24">
-            <div class="bg-white/82 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-white/70 shadow-sm">
+            <div class="bg-white rounded-3xl p-8 lg:p-10 border border-slate-100 shadow-sm">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                     <div class="lg:col-span-4">
                         <span class="text-xs font-black text-brand-accent uppercase tracking-[0.3em]">Profile</span>
@@ -369,7 +393,7 @@
                     </div>
 
                     <div class="lg:col-span-5">
-                        <div class="bg-white/82 backdrop-blur-xl rounded-2xl p-6 border border-white/70 shadow-sm">
+                        <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
                             <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400 mb-4">
                                 Focus Areas
                             </p>
@@ -397,7 +421,7 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <article class="research-card lg:col-span-2 bg-white/82 backdrop-blur-xl rounded-3xl p-8 border border-white/70 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden relative">
+                <article class="research-card lg:col-span-2 bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden relative">
                     <div class="absolute top-0 right-0 w-72 h-72 bg-brand-accent/5 rounded-full blur-3xl translate-x-24 -translate-y-24"></div>
                     <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                         <div class="lg:col-span-2">
@@ -422,30 +446,30 @@
                             </p>
 
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                                <div class="bg-white/55 rounded-2xl p-4 border border-white/70">
+                                <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100">
                                     <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Area</p>
                                     <p class="font-bold text-brand-primary">Lung Cancer AI</p>
                                 </div>
-                                <div class="bg-white/55 rounded-2xl p-4 border border-white/70">
+                                <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100">
                                     <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Method</p>
                                     <p class="font-bold text-brand-primary">Classification</p>
                                 </div>
-                                <div class="bg-white/55 rounded-2xl p-4 border border-white/70">
+                                <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100">
                                     <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Goal</p>
                                     <p class="font-bold text-brand-primary">Computer-Aided Diagnosis</p>
                                 </div>
                             </div>
 
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Medical Imaging</span>
-                                <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Lung Tumor Detection</span>
-                                <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Random Forest</span>
-                                <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Classification</span>
-                                <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Computer-Aided Diagnosis</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Medical Imaging</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Lung Tumor Detection</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Random Forest</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Classification</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Computer-Aided Diagnosis</span>
                             </div>
                         </div>
 
-                        <div class="bg-gradient-to-br from-brand-primary via-slate-800 to-sky-900 rounded-3xl p-6 text-white shadow-xl">
+                        <div class="bg-brand-primary rounded-3xl p-6 text-white shadow-xl">
                             <p class="text-[10px] font-black uppercase tracking-[0.25em] text-brand-accent mb-4">
                                 Research Highlights
                             </p>
@@ -463,7 +487,7 @@
                     </div>
                 </article>
 
-                <article class="research-card bg-white/82 backdrop-blur-xl rounded-3xl p-8 border border-white/70 shadow-sm hover:shadow-md transition-all duration-300">
+                <article class="research-card bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
                     <div class="research-icon w-14 h-14 rounded-2xl bg-brand-accent/10 text-brand-accent flex items-center justify-center mb-6 transition-transform duration-300">
                         <i class="fas fa-brain text-2xl"></i>
                     </div>
@@ -474,13 +498,13 @@
                         mode decomposition and deep learning for medical image analysis.
                     </p>
                     <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">MRI</span>
-                        <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Deep Learning</span>
-                        <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Segmentation</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">MRI</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Deep Learning</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Segmentation</span>
                     </div>
                 </article>
 
-                <article class="research-card bg-white/82 backdrop-blur-xl rounded-3xl p-8 border border-white/70 shadow-sm hover:shadow-md transition-all duration-300">
+                <article class="research-card bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
                     <div class="research-icon w-14 h-14 rounded-2xl bg-brand-accent/10 text-brand-accent flex items-center justify-center mb-6 transition-transform duration-300">
                         <i class="fas fa-microscope text-2xl"></i>
                     </div>
@@ -491,13 +515,13 @@
                         myeloma cells in biomedical images.
                     </p>
                     <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Mask R-CNN</span>
-                        <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Instance Segmentation</span>
-                        <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Data Augmentation</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Mask R-CNN</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Instance Segmentation</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Data Augmentation</span>
                     </div>
                 </article>
 
-                <article class="research-card bg-white/82 backdrop-blur-xl rounded-3xl p-8 border border-white/70 shadow-sm hover:shadow-md transition-all duration-300">
+                <article class="research-card bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
                     <div class="research-icon w-14 h-14 rounded-2xl bg-brand-accent/10 text-brand-accent flex items-center justify-center mb-6 transition-transform duration-300">
                         <i class="fas fa-tooth text-2xl"></i>
                     </div>
@@ -508,13 +532,13 @@
                         screening on dental panoramic radiographs.
                     </p>
                     <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Dental Radiographs</span>
-                        <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Feature Extraction</span>
-                        <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Ensemble Learning</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Dental Radiographs</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Feature Extraction</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Ensemble Learning</span>
                     </div>
                 </article>
 
-                <article class="research-card bg-white/82 backdrop-blur-xl rounded-3xl p-8 border border-white/70 shadow-sm hover:shadow-md transition-all duration-300">
+                <article class="research-card bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
                     <div class="research-icon w-14 h-14 rounded-2xl bg-brand-accent/10 text-brand-accent flex items-center justify-center mb-6 transition-transform duration-300">
                         <i class="fas fa-x-ray text-2xl"></i>
                     </div>
@@ -525,9 +549,9 @@
                         improve model interpretability for medical AI applications.
                     </p>
                     <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">YOLO</span>
-                        <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Heatmaps</span>
-                        <span class="px-3 py-1 bg-brand-soft/80 text-slate-700 text-xs font-bold rounded-lg">Explainable AI</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">YOLO</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Heatmaps</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Explainable AI</span>
                     </div>
                 </article>
             </div>
@@ -546,7 +570,7 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <article class="publication-card bg-white/82 backdrop-blur-xl rounded-3xl p-6 border border-white/70 shadow-sm hover:shadow-md transition-all">
+                <article class="publication-card bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all">
                     <div class="flex gap-4">
                         <div class="publication-icon w-12 h-12 rounded-2xl bg-brand-accent/10 text-brand-accent flex items-center justify-center shrink-0 transition-transform">
                             <i class="fas fa-lungs"></i>
@@ -558,7 +582,7 @@
                     </div>
                 </article>
 
-                <article class="publication-card bg-white/82 backdrop-blur-xl rounded-3xl p-6 border border-white/70 shadow-sm hover:shadow-md transition-all">
+                <article class="publication-card bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all">
                     <div class="flex gap-4">
                         <div class="publication-icon w-12 h-12 rounded-2xl bg-brand-accent/10 text-brand-accent flex items-center justify-center shrink-0 transition-transform">
                             <i class="fas fa-lungs"></i>
@@ -570,7 +594,7 @@
                     </div>
                 </article>
 
-                <article class="publication-card bg-white/82 backdrop-blur-xl rounded-3xl p-6 border border-white/70 shadow-sm hover:shadow-md transition-all">
+                <article class="publication-card bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all">
                     <div class="flex gap-4">
                         <div class="publication-icon w-12 h-12 rounded-2xl bg-brand-accent/10 text-brand-accent flex items-center justify-center shrink-0 transition-transform">
                             <i class="fas fa-brain"></i>
@@ -582,7 +606,7 @@
                     </div>
                 </article>
 
-                <article class="publication-card bg-white/82 backdrop-blur-xl rounded-3xl p-6 border border-white/70 shadow-sm hover:shadow-md transition-all">
+                <article class="publication-card bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all">
                     <div class="flex gap-4">
                         <div class="publication-icon w-12 h-12 rounded-2xl bg-brand-accent/10 text-brand-accent flex items-center justify-center shrink-0 transition-transform">
                             <i class="fas fa-microscope"></i>
@@ -594,7 +618,7 @@
                     </div>
                 </article>
 
-                <article class="publication-card bg-white/82 backdrop-blur-xl rounded-3xl p-6 border border-white/70 shadow-sm hover:shadow-md transition-all">
+                <article class="publication-card bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all">
                     <div class="flex gap-4">
                         <div class="publication-icon w-12 h-12 rounded-2xl bg-brand-accent/10 text-brand-accent flex items-center justify-center shrink-0 transition-transform">
                             <i class="fas fa-dna"></i>
@@ -606,7 +630,7 @@
                     </div>
                 </article>
 
-                <article class="publication-card bg-white/82 backdrop-blur-xl rounded-3xl p-6 border border-white/70 shadow-sm hover:shadow-md transition-all">
+                <article class="publication-card bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all">
                     <div class="flex gap-4">
                         <div class="publication-icon w-12 h-12 rounded-2xl bg-brand-accent/10 text-brand-accent flex items-center justify-center shrink-0 transition-transform">
                             <i class="fas fa-x-ray"></i>
@@ -622,7 +646,7 @@
 
         <!-- SKILLS -->
         <section id="skills" class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
-            <div class="lg:col-span-2 bg-white/82 backdrop-blur-xl rounded-3xl p-8 border border-white/70 shadow-sm">
+            <div class="lg:col-span-2 bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
                 <div class="flex items-center gap-4 mb-10">
                     <div class="p-3 bg-brand-accent/10 rounded-xl">
                         <i class="fas fa-toolbox text-brand-accent text-xl"></i>
@@ -631,7 +655,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="p-5 bg-white/55 rounded-2xl border border-white/70">
+                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
                         <h3 class="font-display font-bold text-brand-primary mb-3">Biomedical AI</h3>
                         <p class="text-sm leading-relaxed text-slate-600" style="text-align: justify;">
                             Medical image processing, deep learning, computer-aided diagnosis, segmentation,
@@ -639,7 +663,7 @@
                         </p>
                     </div>
 
-                    <div class="p-5 bg-white/55 rounded-2xl border border-white/70">
+                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
                         <h3 class="font-display font-bold text-brand-primary mb-3">Programming</h3>
                         <p class="text-sm leading-relaxed text-slate-600" style="text-align: justify;">
                             Python, MATLAB, C#, R, SQL, research programming, machine learning workflows, and image
@@ -647,7 +671,7 @@
                         </p>
                     </div>
 
-                    <div class="p-5 bg-white/55 rounded-2xl border border-white/70">
+                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
                         <h3 class="font-display font-bold text-brand-primary mb-3">Research</h3>
                         <p class="text-sm leading-relaxed text-slate-600" style="text-align: justify;">
                             Academic publications, experiment design, model evaluation, technical writing, research
@@ -655,7 +679,7 @@
                         </p>
                     </div>
 
-                    <div class="p-5 bg-white/55 rounded-2xl border border-white/70">
+                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
                         <h3 class="font-display font-bold text-brand-primary mb-3">Teaching</h3>
                         <p class="text-sm leading-relaxed text-slate-600" style="text-align: justify;">
                             Biomedical engineering teaching, student mentoring, internship supervision, and research
@@ -665,7 +689,7 @@
                 </div>
             </div>
 
-            <div class="bg-gradient-to-br from-brand-primary via-slate-800 to-sky-900 text-white rounded-3xl p-8 shadow-sm">
+            <div class="bg-brand-primary text-white rounded-3xl p-8 shadow-sm">
                 <div class="flex items-center gap-4 mb-10">
                     <div class="p-3 bg-brand-accent/10 rounded-xl">
                         <i class="fas fa-star text-brand-accent text-xl"></i>
@@ -708,7 +732,7 @@
             </div>
 
             <div class="space-y-8">
-                <div class="bg-white/82 backdrop-blur-xl rounded-3xl p-8 border border-white/70 shadow-sm">
+                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div>
                             <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-accent/10 text-brand-accent">Dec 2022 – Present</span>
@@ -724,7 +748,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white/82 backdrop-blur-xl rounded-3xl p-8 border border-white/70 shadow-sm">
+                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div>
                             <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-accent/10 text-brand-accent">2020 – 2022</span>
@@ -739,7 +763,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white/82 backdrop-blur-xl rounded-3xl p-8 border border-white/70 shadow-sm">
+                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div>
                             <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-accent/10 text-brand-accent">2019 – 2020</span>
@@ -754,7 +778,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white/82 backdrop-blur-xl rounded-3xl p-8 border border-white/70 shadow-sm">
+                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div>
                             <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-accent/10 text-brand-accent">2018 – 2019</span>
@@ -773,7 +797,7 @@
 
         <!-- EDUCATION AND AWARDS -->
         <section id="education" class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
-            <div class="bg-white/82 backdrop-blur-xl rounded-3xl p-8 border border-white/70 shadow-sm">
+            <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
                 <div class="flex items-center gap-4 mb-10">
                     <div class="p-3 bg-brand-accent/10 rounded-xl">
                         <i class="fas fa-graduation-cap text-brand-accent text-xl"></i>
@@ -805,7 +829,7 @@
                 </div>
             </div>
 
-            <div class="bg-gradient-to-br from-brand-primary via-slate-800 to-sky-900 text-white rounded-3xl p-8 shadow-sm">
+            <div class="bg-brand-primary text-white rounded-3xl p-8 shadow-sm">
                 <div class="flex items-center gap-4 mb-10">
                     <div class="p-3 bg-brand-accent/10 rounded-xl">
                         <i class="fas fa-award text-brand-accent text-xl"></i>
@@ -835,7 +859,7 @@
 
         <!-- LANGUAGES -->
         <section class="mb-24">
-            <div class="bg-white/82 backdrop-blur-xl rounded-3xl p-8 border border-white/70 shadow-sm">
+            <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="p-3 bg-brand-accent/10 rounded-xl">
                         <i class="fas fa-language text-brand-accent text-xl"></i>
@@ -844,15 +868,15 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="p-5 bg-white/55 rounded-2xl border border-white/70">
+                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
                         <p class="font-display font-bold text-brand-primary">Burmese</p>
                         <p class="text-sm text-slate-500 mt-1">Native</p>
                     </div>
-                    <div class="p-5 bg-white/55 rounded-2xl border border-white/70">
+                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
                         <p class="font-display font-bold text-brand-primary">English</p>
                         <p class="text-sm text-slate-500 mt-1">Fluent</p>
                     </div>
-                    <div class="p-5 bg-white/55 rounded-2xl border border-white/70">
+                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
                         <p class="font-display font-bold text-brand-primary">Japanese</p>
                         <p class="text-sm text-slate-500 mt-1">N3</p>
                     </div>
@@ -868,7 +892,7 @@
     </button>
 
     <!-- FOOTER -->
-    <footer class="bg-gradient-to-br from-brand-primary via-slate-900 to-sky-950 text-white py-20 print:hidden">
+    <footer class="bg-slate-900/95 backdrop-blur-xl text-white py-20 print:hidden border-t border-white/10">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl font-display font-bold mb-8">Let's Connect</h2>
 
